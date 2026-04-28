@@ -74,8 +74,3 @@ export default defineConfig([
 ]);
 ```
 
-APIS
-https://distancematrix.ai/geocoding-api
-https://foursquare.com/products/places-api/
-
-PLACE_APY_KEY=H0A3DMIOQLXWX5INUSIM1KQWWY3WKQIBGY4OGENT4WHG3IV4
