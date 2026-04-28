@@ -1,0 +1,1 @@
+export { getImageCountry } from "./getImagesCountry";
