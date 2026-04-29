@@ -1,11 +1,12 @@
 import { useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 
-import { CountriesGridSkeleton } from "../../skeletons/countries-grid-skeleton";
-import { CountriesCard } from "./countries-card";
+import { CountriesGridSkeleton } from "../skeletons/countries-grid-skeleton";
+
 import { ContinentFilter } from "./continent-filter";
-import { useCountries } from "./hooks/useCountries";
-import { InputSearch } from "../../components/shared";
+import { useCountries } from "../hooks/useCountries";
+import { InputSearch } from "../../../components/shared";
+import { CountriesCard } from "./countries-card";
 
 export function CountriesGrid() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,6 +41,7 @@ export function CountriesGrid() {
     setSearchParams((prev) => {
       const params = new URLSearchParams(prev);
       params.set("region", region);
+      params.delete("name");
       return params;
     });
 

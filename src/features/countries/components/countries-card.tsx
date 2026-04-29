@@ -1,6 +1,6 @@
+import { useImageCountry } from "@hooks/useImageCountry";
 import { Link } from "react-router-dom";
-import { useImageCountry } from "../../hooks/useImageCountry";
-import type { CountriesResponse } from "./types/countries";
+import type { CountriesResponse } from "../types/countries";
 
 type CountriesCardProps = {
   country: CountriesResponse;

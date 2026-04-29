@@ -1,4 +1,4 @@
-import { CONTINENTS } from "../../const/const";
+import { CONTINENTS } from "../../../const/const";
 
 type ContinentFilterProps = {
   onRegion: (region: string) => void;

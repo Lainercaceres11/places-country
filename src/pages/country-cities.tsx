@@ -1,4 +1,4 @@
-import { CitiesCountries } from "../features/cities/cities-countries";
+import { CitiesCountries } from "../features/cities/components/cities-countries";
 
 export function CountryCities() {
   return (

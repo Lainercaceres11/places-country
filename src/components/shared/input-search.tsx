@@ -18,7 +18,7 @@ export const InputSearch = ({ onChange, value }: CountriesFilterProps) => {
         id="search"
         name="search"
         type="search"
-        placeholder="Buscar país..."
+        placeholder="Buscar..."
         className="w-full h-12 pl-10 pr-4 border border-gray-200 rounded-2xl text-base"
       />
 

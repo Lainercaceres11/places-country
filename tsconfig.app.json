@@ -6,7 +6,14 @@
     "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
-
+    "paths": {
+      "@features/*": ["./src/features/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@request/*": ["./src/request/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@pages/*": ["./src/pages/*"]
+    },
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

@@ -1,5 +1,5 @@
+import { useCountryByName } from "@features/countries/hooks/useCountryByName";
 import { Landmark, MapPin, MapPinHouse, PersonStanding } from "lucide-react";
-import { useCountryByName } from "../countries/hooks/useCountryByName";
 
 type CitiesCountryProps = {
   countryName: string;

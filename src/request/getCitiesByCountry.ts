@@ -1,4 +1,4 @@
-import type { CitiesCountry } from "../features/cities/types/cities-by-country";
+import type { CitiesCountry } from "@features/cities/types/cities-by-country";
 
 const URL =
   "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?types=CITY&minPopulation=100000&sort=-population&limit=10";

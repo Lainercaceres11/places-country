@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import type { CitiesCountry } from "../types/cities-by-country";
+
 import { getCitiesByCountry } from "../../../request/getCitiesByCountry";
+import type { CitiesCountry } from "../types/cities-by-country";
 
 export const useCitiesByCountry = (countryCode: string) => {
   const {
