@@ -6,3 +6,5 @@ export const CATERING = {
   park: "leisure.park",
   hotel: "accommodation.hotel",
 };
+
+export const PLACE_HOLDER_IMAGE = "/placeholder.webp";

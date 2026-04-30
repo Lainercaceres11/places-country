@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { usePlacesNearby } from "../hooks/usePlacesNearby";
 import { PlaceNearbyCard } from "./place-nearby-card";
-import { CATERING } from "../../../const/const";
+import { CATERING, PLACE_HOLDER_IMAGE } from "../../../const/const";
 import { useState } from "react";
 import { useImageCountry } from "@hooks/useImageCountry";
 import { Banner } from "@components/shared";
@@ -20,14 +20,12 @@ export function PlacesNearby() {
   const [catering, setCatering] = useState(CATERING.restaurant);
   const { places, isLoading } = usePlacesNearby(cityName || "", catering);
 
-
   const { images } = useImageCountry(cityName || "");
 
   if (isLoading) return <PlacesNearbySkeleton />;
 
-  const imageUrl = Array.isArray(images)
-    ? undefined
-    : images?.photos?.[0]?.src.landscape;
+  const imageData = Array.isArray(images) ? undefined : images;
+  const imageUrl = imageData?.photos?.[0]?.src?.landscape ?? PLACE_HOLDER_IMAGE;
 
   return (
     <div className="space-y-4">

@@ -11,6 +11,10 @@ export const useImageCountry = (country: string) => {
   } = useQuery<ImageCountryResponse>({
     queryKey: ["images", country],
     queryFn: () => getImageCountry(country),
+    staleTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60 * 24,
+    retry: 1,
+    enabled: !!country,
   });
 
   return { images, error, isLoading };

@@ -1,6 +1,7 @@
 import { useImageCountry } from "@hooks/useImageCountry";
 import { Link } from "react-router-dom";
 import type { CountriesResponse } from "../types/countries";
+import { PLACE_HOLDER_IMAGE } from "../../../const/const";
 
 type CountriesCardProps = {
   country: CountriesResponse;
@@ -8,10 +9,8 @@ type CountriesCardProps = {
 
 export function CountriesCard({ country }: CountriesCardProps) {
   const { images, isLoading } = useImageCountry(country.name.common);
-  const imageUrl =
-    images && !Array.isArray(images) && images.photos[0]
-      ? images.photos[0].src.large
-      : undefined;
+  const imageData = Array.isArray(images) ? undefined : images;
+  const imageUrl = imageData?.photos?.[0]?.src?.large ?? PLACE_HOLDER_IMAGE;
   return (
     <article className="flex flex-col gap-4 md:gap-6 relative border border-transparent rounded-4xl shadow-md">
       {isLoading ? (

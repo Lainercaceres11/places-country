@@ -9,15 +9,13 @@ import { CitiesCountryCard } from "./cities-country-card";
 import { useImageCountry } from "@hooks/useImageCountry";
 import { NotFoundCities } from "./not-found-cities";
 import { useQueryState } from "@hooks/useQueryState";
+import { PLACE_HOLDER_IMAGE } from "../../../const/const";
 
 export const CitiesCountries = () => {
   const { countryCode, country: countryName = "" } = useParams();
   const { cities, isLoading, error } = useCitiesByCountry(countryCode || "");
   const navigate = useNavigate();
   const { images } = useImageCountry(countryName);
-  const imageUrl = Array.isArray(images)
-    ? undefined
-    : images?.photos?.[0]?.src.landscape;
 
   const { value, setValue } = useQueryState("name");
 
@@ -28,6 +26,9 @@ export const CitiesCountries = () => {
   }, [cities, value]);
 
   if (isLoading) return <CountryPageSkeleton />;
+
+  const imageData = Array.isArray(images) ? undefined : images;
+  const imageUrl = imageData?.photos?.[0]?.src?.landscape ?? PLACE_HOLDER_IMAGE;
 
   const handleBack = () => {
     navigate(-1);

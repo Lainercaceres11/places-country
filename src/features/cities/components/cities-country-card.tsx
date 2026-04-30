@@ -1,6 +1,7 @@
 import { useImageCountry } from "@hooks/useImageCountry";
 import type { CitiesCountry } from "../types/cities-by-country";
 import { Link } from "react-router-dom";
+import { PLACE_HOLDER_IMAGE } from "../../../const/const";
 
 type CitiesCountryCardProps = {
   city: CitiesCountry["data"][0];
@@ -8,10 +9,8 @@ type CitiesCountryCardProps = {
 
 export const CitiesCountryCard = ({ city }: CitiesCountryCardProps) => {
   const { images, isLoading, error } = useImageCountry(`${city.name}`);
-  const imageUrl =
-    images && !Array.isArray(images) && images.photos[0]
-      ? images.photos[0].src.large
-      : undefined;
+  const imageData = Array.isArray(images) ? undefined : images;
+  const imageUrl = imageData?.photos?.[0]?.src?.large ?? PLACE_HOLDER_IMAGE;
 
   if (error) return <div>Error</div>;
 
