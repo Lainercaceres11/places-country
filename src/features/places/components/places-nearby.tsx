@@ -20,6 +20,7 @@ export function PlacesNearby() {
   const [catering, setCatering] = useState(CATERING.restaurant);
   const { places, isLoading } = usePlacesNearby(cityName || "", catering);
 
+
   const { images } = useImageCountry(cityName || "");
 
   if (isLoading) return <PlacesNearbySkeleton />;

@@ -13,12 +13,12 @@ export function BannerMain() {
       <div className="relative z-10 text-center space-y-2">
         <div className="uppercase flex items-center justify-center gap-2">
           <LocateFixed size={40} />{" "}
-          <span className="ml-2">Explora el mundo</span>
+          <span className="ml-2 text-gray-200">Explora el mundo</span>
         </div>
         <h1 className="text-4xl font-bold  drop-shadow-lg">
           Descubre Lugares Increíbles
         </h1>
-        <p className="tex-large">
+        <p className="tex-large text-gray-200">
           Viaja por países, ciudades y lugares turísticos de todo el mundo
         </p>
       </div>

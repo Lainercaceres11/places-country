@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useCitiesByCountry } from "../hooks/useCitiesByCountry";
 import { CountryPageSkeleton } from "../skeleton/cities-countries-skeleton";
@@ -8,28 +8,29 @@ import { Banner, InputSearch } from "@components/shared";
 import { CitiesCountryCard } from "./cities-country-card";
 import { useImageCountry } from "@hooks/useImageCountry";
 import { NotFoundCities } from "./not-found-cities";
+import { useQueryState } from "@hooks/useQueryState";
 
 export const CitiesCountries = () => {
   const { countryCode, country: countryName = "" } = useParams();
   const { cities, isLoading, error } = useCitiesByCountry(countryCode || "");
+  const navigate = useNavigate();
   const { images } = useImageCountry(countryName);
   const imageUrl = Array.isArray(images)
     ? undefined
     : images?.photos?.[0]?.src.landscape;
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("name") || "";
+  const { value, setValue } = useQueryState("name");
 
   const filteredCities = useMemo(() => {
     return cities?.data.filter((city) =>
-      city.name.toLowerCase().includes(search.toLowerCase()),
+      city.name.toLowerCase().includes(value.toLowerCase()),
     );
-  }, [cities, search]);
+  }, [cities, value]);
 
   if (isLoading) return <CountryPageSkeleton />;
 
   const handleBack = () => {
-    window.history.back();
+    navigate(-1);
   };
   if (error)
     return (
@@ -61,20 +62,7 @@ export const CitiesCountries = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
-    setSearchParams(
-      (prev) => {
-        const params = new URLSearchParams(prev);
-
-        if (value) {
-          params.set("name", value);
-        } else {
-          params.delete("name");
-        }
-
-        return params;
-      },
-      { replace: true },
-    );
+    setValue(value);
   };
 
   return (
@@ -84,7 +72,7 @@ export const CitiesCountries = () => {
         <CitiesCountryInfo countryName={countryName} />
         <div className="flex flex-wrap md:flex-nowrap md:justify-between gap-2 items-center w-full">
           <h1 className="text-2xl font-bold w-375">Ciudades principales</h1>
-          <InputSearch onChange={handleChange} value={search} />
+          <InputSearch onChange={handleChange} value={value} />
         </div>
         <ul className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredCities?.length === 0 ? (

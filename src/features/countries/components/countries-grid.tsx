@@ -1,4 +1,3 @@
-import { useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 
 import { CountriesGridSkeleton } from "../skeletons/countries-grid-skeleton";
@@ -8,28 +7,17 @@ import { useCountries } from "../hooks/useCountries";
 import { InputSearch } from "../../../components/shared";
 import { CountriesCard } from "./countries-card";
 import { BannerMain } from "./banner-main";
+import { useQueryState } from "@hooks/useQueryState";
 
 export function CountriesGrid() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("name") || "";
-  const { countries, error, isLoading } = useCountries(
-    searchParams.get("region") || "Americas",
-  );
+  const { value: search, setValue: setSearch } = useQueryState("name");
+  const { value: region, setValue: setRegion } = useQueryState("region");
+
+  const { countries, error, isLoading } = useCountries(region || "Americas");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-
-      if (value) {
-        params.set("name", value);
-      } else {
-        params.delete("name");
-      }
-
-      return params;
-    });
+    setSearch(value);
   };
 
   const filteredCountries = useMemo(() => {
@@ -39,13 +27,7 @@ export function CountriesGrid() {
   }, [countries, search]);
 
   const handleRegion = (region: string) => {
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-      params.set("region", region);
-      params.delete("name");
-      return params;
-    });
-
+    setRegion(region, { clear: ["name"] });
     countries.filter((country) => country.region === region);
   };
 
@@ -60,7 +42,7 @@ export function CountriesGrid() {
         <div className="bg-white shadow-md rounded-md w-full px-4 py-2 space-y-4 ">
           <InputSearch value={search} onChange={handleChange} />
           <ContinentFilter
-            region={searchParams.get("region") || "Americas"}
+            region={region || "Americas"}
             onRegion={handleRegion}
           />
         </div>
