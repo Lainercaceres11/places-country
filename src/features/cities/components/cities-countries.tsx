@@ -1,11 +1,10 @@
 import { useMemo } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
-import { ArrowLeft } from "lucide-react";
 import { useCitiesByCountry } from "../hooks/useCitiesByCountry";
 import { CountryPageSkeleton } from "../skeleton/cities-countries-skeleton";
 import { CitiesCountryInfo } from "./cities-country-info";
-import { InputSearch } from "@components/shared";
+import { Banner, InputSearch } from "@components/shared";
 import { CitiesCountryCard } from "./cities-country-card";
 import { useImageCountry } from "@hooks/useImageCountry";
 import { NotFoundCities } from "./not-found-cities";
@@ -16,7 +15,7 @@ export const CitiesCountries = () => {
   const { images } = useImageCountry(countryName);
   const imageUrl = Array.isArray(images)
     ? undefined
-    : images?.photos?.[0]?.src.large;
+    : images?.photos?.[0]?.src.landscape;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("name") || "";
@@ -80,23 +79,7 @@ export const CitiesCountries = () => {
 
   return (
     <>
-      <div
-        className="w-full h-60 flex flex-col justify-center text-white gap-4 grayscale bg-cover bg-no-repeat bg-center"
-        style={{ backgroundImage: imageUrl ? `url(${imageUrl})` : undefined }}
-      >
-        <button
-          aria-label="Volver"
-          onClick={handleBack}
-          className="bg-transparent border-0"
-        >
-          <div className="flex  gap-2 ml-2 lg:ml-32 ">
-            <ArrowLeft />
-            <span>Volver</span>
-          </div>
-        </button>
-
-        <h2 className="text-4xl font-bold ml-2 lg:ml-32">{countryName}</h2>
-      </div>
+      <Banner countryName={countryName} imageUrl={imageUrl || ""} />
       <div className="max-w-7xl mx-auto space-y-4 p-4">
         <CitiesCountryInfo countryName={countryName} />
         <div className="flex flex-wrap md:flex-nowrap md:justify-between gap-2 items-center w-full">
