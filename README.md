@@ -53,9 +53,21 @@ npm run dev
 
 ---
 
+## 🔐 Variables de entorno
+
+Antes de ejecutar el proyecto, debes crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
+```env
+VITE_PEXELS_ACCESS_KEY=your_pexels_api_key
+VITE_RAPID_API_KEY=your_rapidapi_key
+VITE_RAPID_API_HOST=your_rapidapi_host
+VITE_PLACES_KEY=your_places_api_key
+```
+
 ## 📂 Estructura del proyecto
 
 ```
+
 src/
 │
 ├── components/
@@ -64,6 +76,7 @@ src/
 ├── features/
 ├── request/
 └── providers/
+
 ```
 
 ---

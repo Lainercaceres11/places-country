@@ -5,13 +5,13 @@ export interface CountriesResponse {
   cca3: string;
   cioc?: string;
   independent: boolean;
-  status: Status;
+  status: string;
   unMember: boolean;
   idd: Idd;
   capital: string[];
   altSpellings: string[];
-  region: Region;
-  subregion: Subregion;
+  region: string;
+  subregion: string;
   landlocked: boolean;
   borders?: string[];
   area: number;
@@ -20,7 +20,7 @@ export interface CountriesResponse {
   fifa?: string;
   car: Car;
   timezones: string[];
-  continents: Continent[];
+  continents: string[];
   flag: string;
   name: Name;
   currencies: { [key: string]: Currency };
@@ -31,7 +31,7 @@ export interface CountriesResponse {
   gini?: { [key: string]: number };
   flags: Flags;
   coatOfArms: CoatOfArms;
-  startOfWeek: StartOfWeek;
+  startOfWeek: string;
   capitalInfo: CapitalInfo;
   postalCode: PostalCode;
 }
@@ -42,23 +42,12 @@ export interface CapitalInfo {
 
 export interface Car {
   signs?: string[];
-  side: Side;
-}
-
-export enum Side {
-  Left = "left",
-  Right = "right",
+  side: string;
 }
 
 export interface CoatOfArms {
   png?: string;
   svg?: string;
-}
-
-export enum Continent {
-  NorthAmerica = "North America",
-  Oceania = "Oceania",
-  SouthAmerica = "South America",
 }
 
 export interface Currency {
@@ -88,9 +77,9 @@ export interface Idd {
 }
 
 export interface Languages {
-  spa?: SPA;
+  spa?: string;
   fra?: string;
-  eng?: EngEnum;
+  eng?: string;
   jam?: string;
   nld?: string;
   pap?: string;
@@ -101,14 +90,6 @@ export interface Languages {
   por?: string;
   aym?: string;
   que?: string;
-}
-
-export enum EngEnum {
-  English = "English",
-}
-
-export enum SPA {
-  Spanish = "Spanish",
 }
 
 export interface Maps {
@@ -130,24 +111,4 @@ export interface Translation {
 export interface PostalCode {
   format: null | string;
   regex: null | string;
-}
-
-enum Region {
-  Americas = "Americas",
-}
-
-enum StartOfWeek {
-  Monday = "monday",
-  Sunday = "sunday",
-}
-
-enum Status {
-  OfficiallyAssigned = "officially-assigned",
-}
-
-enum Subregion {
-  Caribbean = "Caribbean",
-  CentralAmerica = "Central America",
-  NorthAmerica = "North America",
-  SouthAmerica = "South America",
 }
