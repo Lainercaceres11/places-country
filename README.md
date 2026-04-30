@@ -1,77 +1,107 @@
-# React + TypeScript + Vite
+# 🌍 Countries Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web construida con **React + TypeScript + Vite** que permite explorar países, filtrarlos por región y descubrir lugares cercanos como restaurantes, hoteles y parques.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Características
 
-## React Compiler
+- 🔍 Búsqueda de países en tiempo real
+- 🌎 Filtro por continentes
+- 📍 Exploración de lugares cercanos (restaurantes, cafés, bares, etc.)
+- ⚡ Navegación rápida con React Router
+- 💅 UI moderna con TailwindCSS
+- 🔄 Manejo de estado con URL params (query state)
+- ⏳ Skeleton loaders para mejor UX
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 📸 Vista previa
 
-## Expanding the ESLint configuration
+![Home](public/preview-1.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Places](public/preview-2.png)
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tecnologías
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- ⚛️ React
+- 🟦 TypeScript
+- ⚡ Vite
+- 🎨 TailwindCSS
+- 🔁 React Query
+- 🧭 React Router
+
+---
+
+## 🚀 Instalación
+
+```bash
+# Clonar repositorio
+git clone https://github.com/Lainercaceres11/places-country.git
+
+# Entrar al proyecto
+cd tu-repo
+
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## 📂 Estructura del proyecto
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```
+src/
+│
+├── components/
+├── hooks/
+├── pages/
+├── features/
+├── request/
+└── providers/
 ```
 
+---
 
+## 🧠 Hooks personalizados
+
+El proyecto incluye hooks reutilizables como:
+
+- `useQueryState` → sincroniza estado con la URL
+- `useCountries` → obtiene países por región
+- `usePlacesNearby` → obtiene lugares cercanos
+
+---
+
+## 🎯 Mejores prácticas implementadas
+
+- Separación de lógica en hooks
+- Componentes reutilizables
+- Manejo de estados de carga
+- Evita re-renders innecesarios
+- Código tipado con TypeScript
+
+---
+
+## 📦 Build
+
+```bash
+npm run build
+```
+
+---
+
+## 📄 Licencia
+
+MIT
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por **Lainer Caceres**
